@@ -1,0 +1,18 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Install dependencies
+COPY workers/api/package*.json ./
+RUN npm install
+
+# Copy source
+COPY workers/api/src ./src
+COPY workers/api/tsconfig.json ./
+
+# Install tsx for running TypeScript with ESM
+RUN npm install -g tsx
+
+EXPOSE 8787
+
+CMD ["tsx", "src/local-server.ts"]

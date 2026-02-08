@@ -1,0 +1,19 @@
+name = "sigantara-filemanager-api"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+[observability]
+enabled = true
+
+[[r2_buckets]]
+binding = "R2_BUCKET"
+bucket_name = "sigantara-files"
+
+[[queues.producers]]
+binding = "FILE_QUEUE"
+queue = "file-processing-queue"
+
+[vars]
+DATABASE_URL = ""
+JWT_SECRET = ""
+R2_PUBLIC_URL = ""
